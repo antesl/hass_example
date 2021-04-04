@@ -17,8 +17,6 @@
       entity_id: timer.5m
   mode: single
 - id: '1617541942525'
-
-- id: '1617541942525'
   alias: Анатолий дома2
   description: ''
   trigger:

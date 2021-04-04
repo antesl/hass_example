@@ -1,3 +1,23 @@
+- id: '1617541768782'
+  alias: Телефон Анатолия в сети
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.oneplus5t
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    after: 07:00
+    before: '23:00'
+  action:
+  - service: timer.start
+    data: {}
+    target:
+      entity_id: timer.5m
+  mode: single
+- id: '1617541942525'
+
 - id: '1617541942525'
   alias: Анатолий дома2
   description: ''

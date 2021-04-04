@@ -1,0 +1,17 @@
+timer:
+  5m:
+    duration: "00:05:00"
+  rostislav_phone:
+    duration: "00:05:00"
+
+binary_sensor:
+   - platform: ping
+     name: "OnePlus5T"
+     host: 10.0.0.38
+     count: 2
+     scan_interval: 10
+
+   - platform: ping
+     name: "Nokia"
+     host: 10.0.0.41
+     scan_interval: 10

@@ -1,0 +1,68 @@
+- id: '1617541942525'
+  alias: Анатолий дома2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.door_and_window_sensor_1bad
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 07:00
+      before: '23:00'
+    - condition: state
+      entity_id: timer.5m
+      state: active
+  action:
+  - service: yandex_station.send_command
+    data:
+      command: sendText
+      text: Повтори за мной 'Анатолий, здравствуйте! Добро пожаловать домой
+  - service: timer.finish
+    target:
+      entity_id: timer.5m
+  mode: single
+- id: '1617546668623'
+  alias: Телефон Ростислава в сети
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.nokia
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    after: 07:00
+    before: '23:00'
+  action:
+  - service: timer.start
+    data: {}
+    target:
+      entity_id: timer.rostislav_phone
+  mode: single
+- id: '1617546928733'
+  alias: Ростислав дома
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.door_and_window_sensor_1bad
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    after: 07:00
+    before: '23:00'
+  - condition: state
+    entity_id: timer.rostislav_phone
+    state: active
+  action:
+  - service: yandex_station.send_command
+    data:
+      command: sendText
+      text: Повтори за мной 'Ростислав, привет! Как твои дела?'
+  - service: timer.finish
+    target:
+      entity_id: timer.rostislav_phone
+  mode: single

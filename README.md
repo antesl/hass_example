@@ -1,2 +1,2 @@
 # hass_example
-Examples for homeaasistant
+Homeassistant configuration examples
